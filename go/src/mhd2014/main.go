@@ -27,11 +27,11 @@ func handler(rw http.ResponseWriter, req *http.Request) {
 }
 
 type Task struct {
-	RightImageURL  string
-	WrongImageURL  string
-	Headline       string
-	FullArticleURL string
-	HintURL        string
+	RightImageURL  string `json:"rightImageURL"`
+	WrongImageURL  string `json:"wrongImageURL"`
+	Headline       string `json:"headline"`
+	FullArticleURL string `json:"fullArticleURL"`
+	HintURL        string `json:"hintURL"`
 }
 
 func dailyTasksHandler(rw http.ResponseWriter, req *http.Request) {
