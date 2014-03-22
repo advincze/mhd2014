@@ -21,7 +21,7 @@ function initEvents() {
         questions.validate($(this));
         window.setTimeout(function() {
             questions.next();
-        }, 2000);
+        }, 600);
     });
 }
 
