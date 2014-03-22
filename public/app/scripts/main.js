@@ -6,6 +6,10 @@ $(document).ready(function() {
     $('.answers-images .answer').css('height', parseInt($('.question-wrapper').css('width')) / 2);
     $(".progress-bar.counter").removeClass("counter").on("transitionend webkitTransitionEnd", function() {
         //alert("zeit abgelaufen");
+        $(".progress-bar.counter").removeClass("counter").on("transitionend webkitTransitionEnd", function() {
+            //alert("zeit abgelaufen");
+            $(this).addClass("finished");
+        });
     });
 });
 
