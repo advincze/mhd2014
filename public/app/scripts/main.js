@@ -5,10 +5,9 @@ $(document).ready(function() {
     initEvents();
     $(".progress-bar.counter").removeClass("counter").on("transitionend webkitTransitionEnd", function() {
         //alert("zeit abgelaufen");
-        $(".progress-bar.counter").removeClass("counter").on("transitionend webkitTransitionEnd", function() {
-            //alert("zeit abgelaufen");
-            $(this).addClass("finished");
-        });
+
+        $(this).addClass("finished");
+        $(".question-wrapper.active .answer").css("opacity", 0.6);
     });
     initSizes();
 });
