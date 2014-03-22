@@ -10,7 +10,6 @@ function Questions() {
 
                 var questions = data;
                 var first = $('#all-questions .question-wrapper').first();
-                var clone = first.clone();
                 console.log(first);
                 first.children('.question-text').children('h3').text(questions[0].headline);
                 console.log(questions[0].answerRight);
@@ -22,6 +21,7 @@ function Questions() {
                 var l = 100;
                 console.log(questions.length);
                 for (var i = 1; i < questions.length; i++) {
+                    var clone = first.clone();
                     clone.children('.question-text').children('h3').text(questions[i].headline);
                     clone.children('.answers-images').children(".answer.right").attr('data-img', questions[i].rightImageURL.replace("w1-h1","w500-h500-oo"));
                     clone.children('.answers-images').children(".answer.wrong").attr('data-img', questions[i].wrongImageURL.replace("w1-h1","w500-h500-oo"));
