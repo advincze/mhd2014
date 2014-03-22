@@ -13,4 +13,7 @@ function Questions() {
     this.next = function() {
         //TODO: swipes to the next question
     }
+    this.validate = function(obj) {
+        console.log(obj);
+    }
 }
