@@ -15,3 +15,20 @@
     float: left;
     background-size: cover;
 }
+#all-questions {
+    overflow: hidden;
+}
+.questions-inner-wrapper {
+    position: relative;
+    width: auto;
+    height: 500px;
+    -webkit-transition: left 1s ease-out;
+    -moz-transition: left 1s ease-out;
+    -ms-transition: left 1s ease-out;
+    -o-transition: left 1s ease-out;
+    transition: left 1s ease-out;
+    left: 0%;
+}
+.question-wrapper {
+    position: absolute;
+}

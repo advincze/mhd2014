@@ -3,13 +3,13 @@ $(document).ready(function() {
     questions.init();
     questions.activate();
     initEvents();
-    $('.answers-images .answer').css('height', parseInt($('.question-wrapper').css('width')) / 2);
     $(".progress-bar.counter").removeClass("counter").on("transitionend webkitTransitionEnd", function() {
         //alert("zeit abgelaufen");
-           
-            $(this).addClass("finished");
-            $(".question-wrapper.active .answer").css("opacity",0.6);
-        });
+
+        $(this).addClass("finished");
+        $(".question-wrapper.active .answer").css("opacity", 0.6);
+    });
+    initSizes();
 });
 
 function initEvents() {
@@ -19,5 +19,12 @@ function initEvents() {
     $('#all-questions').on('click', '.answer', function() {
         var questions = new Questions();
         questions.validate($(this));
+        window.setTimeout(function() {
+            questions.next();
+        }, 2000);
     });
+}
+
+function initSizes() {
+    $('.answers-images .answer').css('height', parseInt($('.question-wrapper').css('width')) / 2);
 }
