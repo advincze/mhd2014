@@ -17,7 +17,7 @@
 .header {
     height: 50px;
     background-color: #3BAFDA;
-    padding: 0px 10px;
+    padding: 0px 15px;
     color: #FFF;
 }
 .header h3 {
@@ -25,19 +25,23 @@
 }
 .status-wrapper {
     width: 100%;
-    background-color: #AAB2BD;
+    background-color: #656D78;
     color: #FFF;
-    padding: 3px;
-}
-.progress {
-    margin-bottom: 0;
+    padding: 10px;
 }
 ul.status {
     margin: 0;
+    padding:0;
 }
 ul.status li {
     display: inline;
 }
+.status-wrapper .badge{
+    background:none;
+}
+.badge{
+    border-radius:1px;
+} 
 .question-text h3 {
     margin: 0;
 }
