@@ -15,6 +15,9 @@
     float: left;
     background-size: cover;
 }
+.answers-images > div{
+    cursor:pointer;
+}
 #all-questions {
     overflow: hidden;
 }
