@@ -17,6 +17,7 @@
     margin: 0;
     float: left;
     background-size: cover;
+    background-position:center;
 }
 .answers-images > div {
     cursor:pointer;
