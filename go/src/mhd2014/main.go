@@ -38,8 +38,19 @@ func dailyTasksHandler(rw http.ResponseWriter, req *http.Request) {
 	tasks := make([]*Task, 0, 5)
 
 	tasks = append(tasks, &Task{
-		RightImageURL: "http://www.google.com",
-		WrongImageURL: "http://www.google.com",
+		RightImageURL: "http://www.abendblatt.de/img/vermischtes/crop126086162/8590415521-coriginal/Italian-tourist-died-in-a-bus-accident-in-Gran-Canaria.jpg",
+		WrongImageURL: "http://img.morgenpost.de/img/berlin-aktuell/mobile125855262/6610714992-w1-h1/Matthias-Koeppel-Maler-in-seiner-Galerie-2-.jpg",
+		Headline: "Bus überfährt Touristen - ein Toter und neun Verletzte",
+		FullArticleURL: "http://www.abendblatt.de/vermischtes/article126086163/Bus-ueberfaehrt-Touristen-ein-Toter-und-neun-Verletzte.html",
+		HintURL: "http://www.abendblatt.de/vermischtes/article126086163/Bus-ueberfaehrt-Touristen-ein-Toter-und-neun-Verletzte.html",
+	})
+
+	tasks = append(tasks, &Task{
+		RightImageURL: "http://www.morgenpost.de/vermischtes/stars-und-promis/article126086093/Promi-News-Borchardt-Chef-Mary-modelt-fuer-japanische-Mode.html",
+		WrongImageURL: "http://www.abendblatt.de/img/deutschland/mobile126085746/134071590-w1-h1/Bundestag.jpg",
+		Headline: "Promi-News – \"Borchardt\"-Chef Mary modelt für japanische Mode",
+		FullArticleURL: "http://www.morgenpost.de/vermischtes/stars-und-promis/article126086093/Promi-News-Borchardt-Chef-Mary-modelt-fuer-japanische-Mode.html",
+		HintURL: "http://www.morgenpost.de/vermischtes/stars-und-promis/article126086093/Promi-News-Borchardt-Chef-Mary-modelt-fuer-japanische-Mode.html",
 	})
 
 	bytes, err := json.MarshalIndent(tasks, "", " ")
