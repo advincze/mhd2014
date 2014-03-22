@@ -1,6 +1,7 @@
 function Questions() {
     var currentQuestion = 0,
-        questCount = 0;
+        questCount = 0,
+        questions = {};
 
     this.init = function() {
         $.ajax({
@@ -9,8 +10,7 @@ function Questions() {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                console.log(data);
-                var questions = data;
+                questions = data;
                 questCount = questions.length;
                 var first = $('#all-questions .question-wrapper').first();
                 console.log(first);
@@ -60,15 +60,23 @@ function Questions() {
         $('.badge-task').text(currentQuestion + 1 + " / 5");
     }
     this.validate = function(obj) {
+
+        var correctAnswer = false;
+
         if (obj.hasClass('right')) {
+            correctAnswer = true;
             score.increment(2);
             score.setScore();
             //obj.css('background', '#0F0');
             obj.append('<div class="overlay-right"></div>');
         } else {
             //obj.css('background', '#F00');
-
             obj.append('<div class="overlay-wrong"></div>');
         }
+
+        return correctAnswer;
+    }
+    this.getQuestionData = function(){
+        return questions;
     }
 }
