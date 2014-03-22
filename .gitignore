@@ -3,6 +3,7 @@
 *.a
 *.so
 .*
+!/.gitignore
 # Folders
 _obj
 _test
