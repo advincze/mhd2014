@@ -17,7 +17,6 @@ function Questions() {
                 first.children('.question-text').children('h3').text(questions[0].headline);
                 console.log(questions[0].answerRight);
                 console.log(questions[0].answerWrong);
-
                 first.children('.answers-images').children(".answer.right").attr('data-img', questions[0].rightImageURL.replace("w1-h1", "w500-h500-oo"));
                 first.children('.answers-images').children(".answer.wrong").attr('data-img', questions[0].wrongImageURL.replace("w1-h1", "w500-h500-oo"));
                 first.css('left', 0);
