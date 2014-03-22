@@ -7,11 +7,9 @@
     background-color: #E6E9ED;
     padding: 10px 15px;
 }
-
 .answer.right {
     margin-right:1%;
 }
-
 .answer {
     display: block;
     width: 49.5%;
@@ -20,7 +18,7 @@
     float: left;
     background-size: cover;
 }
-.answers-images > div{
+.answers-images > div {
     cursor:pointer;
 }
 #all-questions {
@@ -46,9 +44,9 @@
     left: 0;
     height: 100%;
     width: 100%;
-    -webkit-animation: fadeIn ease-in 0.5s;
-    -o-animation: fadeIn ease-in 0.5s;
-    animation: fadeIn ease-in 0.5s;
+    -webkit-animation: fadeIn ease-in 0.2s;
+    -o-animation: fadeIn ease-in 0.2s;
+    animation: fadeIn ease-in 0.2s;
 }
 .overlay-right {
     background-color: #8CC152;
@@ -61,7 +59,7 @@
         opacity:0;
     }
     to {
-        opacity:1;
+        opacity:0.5;
     }
 }
 @-moz-keyframes fadeIn {
@@ -69,7 +67,7 @@
         opacity:0;
     }
     to {
-        opacity:1;
+        opacity:0.5;
     }
 }
 @keyframes fadeIn {
@@ -77,6 +75,6 @@
         opacity:0;
     }
     to {
-        opacity:1;
+        opacity:0.5;
     }
 }
