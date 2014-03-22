@@ -2,7 +2,7 @@
 *.o
 *.a
 *.so
-
+.*
 !/.gitignore
 # Folders
 _obj
