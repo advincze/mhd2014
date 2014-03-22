@@ -33,7 +33,7 @@ function Questions() {
                 }
                 first.addClass('active');
                 //takes the active question and activates it
-                $('.question-wrapper.active .answer').each(function() {
+                $('.question-wrapper .answer').each(function() {
                     console.log($(this).attr('data-img'));
                     $(this).css('background-image', "url(" + $(this).attr('data-img') + ")");
                 });

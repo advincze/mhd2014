@@ -8,6 +8,7 @@ $(document).ready(function() {
         //alert("zeit abgelaufen");
 
         $(this).addClass("finished");
+        //questions.next();
         //$(".question-wrapper.active .answer").css("opacity", 0.6);
     });
     initSizes();
