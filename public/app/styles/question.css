@@ -43,10 +43,10 @@
     animation: fadeIn ease-in 0.5s;
 }
 .overlay-right {
-    background-color: #0F0;
+    background-color: #8CC152;
 }
 .overlay-wrong {
-    background-color: #F00;
+    background-color: #DA4453;
 }
 @-webkit-keyframes fadeIn {
     from {
