@@ -37,12 +37,12 @@ ul.status {
 ul.status li {
     display: inline;
 }
-.status-wrapper .badge{
+.status-wrapper .badge {
     background:none;
 }
-.badge{
+.badge {
     border-radius:1px;
-} 
+}
 .question-text h3 {
     margin: 0;
 }
@@ -51,4 +51,9 @@ ul.status li {
     .container {
         max-width: 730px;
     }
+}
+#startscreen {
+    width: 100%;
+    height: 100%;
+    background-color: #3BAFDA;
 }
