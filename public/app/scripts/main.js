@@ -4,7 +4,9 @@ $(document).ready(function() {
     questions.activate();
     initEvents();
     $('.answers-images .answer').css('height', parseInt($('.question-wrapper').css('width')) / 2);
-    $(".progress-bar.counter").removeClass("counter");
+    $(".progress-bar.counter").removeClass("counter").on("transitionend webkitTransitionEnd",function () {
+    	alert("zeit abgelaufen");
+    });
 });
 
 function initEvents() {
