@@ -3,7 +3,8 @@ $(document).ready(function() {
     questions = new Questions();
     questions.init();
     initEvents();
-    $(".progress-bar.counter").removeClass("counter").on("transitionend webkitTransitionEnd", function() {
+    console.log($(".question-wrapper.active .progress-bar.counter").hasClass("counter"));
+    $(".question-wrapper.active .progress-bar.counter").removeClass("counter").on("transitionend webkitTransitionEnd", function() {
         //alert("zeit abgelaufen");
 
         $(this).addClass("finished");
