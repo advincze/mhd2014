@@ -1,16 +1,16 @@
-var Score = function() {
+function Score () {
     var current;
 
-    function init() {
+    this.init = function() {
         current = 0;
         console.log("Score inizialized");
     }
-    init();
+    
 
     this.getScore = function() {
         return current;
     };
-    increment: function(type) {
+    this.increment =  function(type) {
         // 0 falsch -> +0
         // 1 mit joker richtig -> +5
         // 2 richtig -> +10
@@ -28,3 +28,5 @@ var Score = function() {
         }
     }
 };
+
+var s = new Score();
