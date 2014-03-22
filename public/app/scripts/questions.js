@@ -1,9 +1,16 @@
 function Questions() {
     this.init = function() {
-        $('.question-wrapper').each(function() {
-            //TODO: initialize each question 
-        })
+        $.ajax({
+            url: 'testData.json',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                console.log(data.questions);
+                //this.initQuestions(data.questions);
+            }
+        });
     },
+    this.initQuestions = function() {}
     this.activate = function() {
         //takes the active question and activates it
         $('.question-wrapper.active .answer').each(function() {
@@ -14,6 +21,10 @@ function Questions() {
         //TODO: swipes to the next question
     }
     this.validate = function(obj) {
-        console.log(obj);
+        if (obj.hasClass('right')) {
+            obj.css('background', '#0F0');
+        } else {
+            obj.css('background', '#F00');
+        }
     }
 }

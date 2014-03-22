@@ -13,6 +13,6 @@ function initEvents() {
     });
     $('.answer').on('click', function() {
         var questions = new Questions();
-        questions.validate(this);
+        questions.validate($(this));
     });
 }
