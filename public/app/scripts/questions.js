@@ -37,10 +37,8 @@ function Questions() {
                     console.log($(this).attr('data-img'));
                     $(this).css('background-image', "url(" + $(this).attr('data-img') + ")");
                 });
-                 window.setTimeout(function () {
                     $('#loader').hide();
-                    startProgress();
-                },1000);
+
                 $('.questions-inner-wrapper').on("transitionend webkitTransitionEnd", function() {
                     startProgress();
                 });

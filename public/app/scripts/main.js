@@ -10,6 +10,8 @@ $(document).ready(function() {
 function startApp() {
     $('.startscreen').hide();
     $('.questions').css('visibility', '');
+                        startProgress();
+
 }
 
 function initEvents() {
