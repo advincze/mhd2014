@@ -5,12 +5,22 @@ function Questions() {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                console.log(data.questions);
-                //this.initQuestions(data.questions);
+                //console.log(data.questions);
+                var questions = data.questions;
+                var first = $('#all-questions .question-wrapper').first();
+                var clone = first.clone();
+                first.find('.question-text h3').text(questions[0].headline);
+                first.find('.answers.right').attr('data-img', questions[0].imageRight);
+                first.find('.answers.wrong').attr('data-img', questions[0].imageWrong);
+                for (var i = 1; i < questions.length; i++) {
+                    clone.find('.question-text h3').text(questions[i].headline);
+                    clone.find('.answers.right').attr('data-img', questions[i].imageRight);
+                    clone.find('.answers.wrong').attr('data-img', questions[i].imageWrong);
+                    $('#all-questions').append(clone);
+                }
             }
         });
     },
-    this.initQuestions = function() {}
     this.activate = function() {
         //takes the active question and activates it
         $('.question-wrapper.active .answer').each(function() {
