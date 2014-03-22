@@ -53,10 +53,13 @@ function Questions() {
     }
     this.validate = function(obj) {
         if (obj.hasClass('right')) {
+            score.increment(2);
+            score.setScore();
             //obj.css('background', '#0F0');
             obj.append('<div class="overlay-right"></div>');
         } else {
             //obj.css('background', '#F00');
+
             obj.append('<div class="overlay-wrong"></div>');
         }
     }
