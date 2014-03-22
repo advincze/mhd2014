@@ -41,7 +41,11 @@ function Questions() {
                 $('.questions-inner-wrapper').on("transitionend webkitTransitionEnd", function() {
                     startProgress();
                 });
+                window.setTimeout(function () {
+                    $('#loader').hide();
+                },1000);
             }
+
         });
     },
     this.next = function() {
