@@ -20,7 +20,7 @@ function Questions() {
                     clone.children('.answers.wrong').attr('data-img', questions[i].imageWrong);
                     clone.attr('left', l + '%');
                     l += 100;
-                    $('#all-questions').append(clone);
+                    $('#all-questions .questions-inner-wrapper').append(clone);
                 }
             }
         });
