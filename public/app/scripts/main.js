@@ -9,6 +9,7 @@ $(document).ready(function() {
 
 function startApp() {
     $('.startscreen').hide();
+    $('.questions').css('visibility', '');
 }
 
 function initEvents() {
@@ -44,7 +45,11 @@ function showEndScreen(load) {
 function showStartScreen(load) {
     $('.questions').css('visibility', 'hidden');
     if (load) {
-        $('div.startscreen').load("templates/startscreen.html", function(response) {});
+        $('div.startscreen').load("templates/startscreen.html", function(response) {
+            $('#start-btn').on('click', function() {
+                startApp();
+            });
+        });
     } else {
 
     }
