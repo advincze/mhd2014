@@ -1,7 +1,6 @@
 $(document).ready(function() {
     var questions = new Questions();
     questions.init();
-    //questions.activate();
     initEvents();
     $(".progress-bar.counter").removeClass("counter").on("transitionend webkitTransitionEnd", function() {
         //alert("zeit abgelaufen");
