@@ -65,3 +65,16 @@ ul.status li {
 #start-btn {
     width: 200px;
 }
+#loader {
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left:0;
+    background-color:rgba(0,0,0,0.4);
+    background-image: url(preloader.gif);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 64px 64px;
+    background-position: center center;
+    height: 100%;
+}
