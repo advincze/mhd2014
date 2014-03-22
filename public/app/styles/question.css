@@ -32,3 +32,43 @@
 .question-wrapper {
     position: absolute;
 }
+.overlay-right, .overlay-wrong {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    -webkit-animation: fadeIn ease-in 0.5s;
+    -o-animation: fadeIn ease-in 0.5s;
+    animation: fadeIn ease-in 0.5s;
+}
+.overlay-right {
+    background-color: #0F0;
+}
+.overlay-wrong {
+    background-color: #F00;
+}
+@-webkit-keyframes fadeIn {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadeIn {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}

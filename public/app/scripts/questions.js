@@ -14,7 +14,7 @@ function Questions() {
                 console.log(first);
                 first.children('.question-text').children('h3').text(questions[0].headline);
                 console.log(questions[0].answerRight);
-                                console.log(questions[0].answerWrong);
+                console.log(questions[0].answerWrong);
 
                 first.children('.answers-images').children(".answer.right").attr('data-img', questions[0].answerRight);
                 first.children('.answers-images').children(".answer.wrong").attr('data-img', questions[0].answerWrong);
@@ -37,7 +37,7 @@ function Questions() {
             }
         });
     },
-    
+
     this.next = function() {
         //TODO: swipes to the next question
         var oldValue = $('.questions-inner-wrapper')[0].style.left == "" ? 0 : $('.questions-inner-wrapper')[0].style.left;
@@ -46,9 +46,11 @@ function Questions() {
     }
     this.validate = function(obj) {
         if (obj.hasClass('right')) {
-            obj.css('background', '#0F0');
+            //obj.css('background', '#0F0');
+            obj.append('<div class="overlay-right"></div>');
         } else {
-            obj.css('background', '#F00');
+            //obj.css('background', '#F00');
+            obj.append('<div class="overlay-wrong"></div>');
         }
     }
 }
