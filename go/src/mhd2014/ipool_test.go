@@ -14,6 +14,6 @@ func TestIPoolQuery(t *testing.T) {
 
 func TestTrendingArticles(t *testing.T) {
 
-	trendingArticles := GetTrendingArticles()
+	trendingArticles := GetTrendingArticles(5)
 	log.Printf("trending: %v\n", len(trendingArticles))
 }
