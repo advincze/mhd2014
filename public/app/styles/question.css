@@ -7,9 +7,14 @@
     background-color: #E6E9ED;
     padding: 10px 15px;
 }
+
+.answer.right {
+    margin-right:1%;
+}
+
 .answer {
     display: block;
-    width: 50%;
+    width: 49.5%;
     padding: 0;
     margin: 0;
     float: left;
