@@ -35,6 +35,9 @@ ul.status {
 ul.status li {
     display: inline;
 }
+.question-text h3 {
+    margin: 0;
+}
 /* Responsive: Portrait tablets and up */
  @media screen and (min-width: 768px) {
     .container {
