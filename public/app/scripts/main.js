@@ -1,13 +1,13 @@
 $(document).ready(function() {
     var questions = new Questions();
     questions.init();
-    questions.activate();
+    //questions.activate();
     initEvents();
     $(".progress-bar.counter").removeClass("counter").on("transitionend webkitTransitionEnd", function() {
         //alert("zeit abgelaufen");
 
         $(this).addClass("finished");
-        $(".question-wrapper.active .answer").css("opacity", 0.6);
+        //$(".question-wrapper.active .answer").css("opacity", 0.6);
     });
     initSizes();
 });
