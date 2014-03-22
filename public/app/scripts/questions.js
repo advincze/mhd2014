@@ -2,10 +2,12 @@ function Questions() {
     this.init = function() {
         $.ajax({
             url: 'testData.json',
+            //url: "/data/daily",
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                //console.log(data.questions);
+                console.log(data);
+
                 var questions = data.questions;
                 var first = $('#all-questions .question-wrapper').first();
                 var clone = first.clone();
