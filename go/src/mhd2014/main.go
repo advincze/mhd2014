@@ -32,6 +32,7 @@ type Task struct {
 	Headline       string `json:"headline"`
 	FullArticleURL string `json:"fullArticleURL"`
 	HintURL        string `json:"hintURL"`
+	Category       string `json:"category"`
 }
 
 // var tasks []*Task
@@ -43,12 +44,15 @@ func dailyTasksHandler(rw http.ResponseWriter, req *http.Request) {
 
 	for _, article := range trendingArticles {
 
+		unrelArticle := getUnrelatedArticle(article)
+
 		tasks = append(tasks, &Task{
 			RightImageURL:  article.ImageURL,
-			WrongImageURL:  article.ImageURL,
+			WrongImageURL:  unrelArticle.ImageURL,
 			Headline:       article.Headline,
 			FullArticleURL: "http://www.morgenpost.de/vermischtes/stars-und-promis/article126086093/Promi-News-Borchardt-Chef-Mary-modelt-fuer-japanische-Mode.html",
 			HintURL:        "http://www.morgenpost.de/vermischtes/stars-und-promis/article126086093/Promi-News-Borchardt-Chef-Mary-modelt-fuer-japanische-Mode.html",
+			Category:       article.Category,
 		})
 	}
 

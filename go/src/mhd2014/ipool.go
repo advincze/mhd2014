@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -30,7 +31,16 @@ func addQuotes(strings []string) []string {
 	return quotedstrings
 }
 
-func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string) []*IPoolArticle {
+func addNegative(strings []string) []string {
+	negativeStr := make([]string, 0, len(strings))
+	for _, s := range strings {
+
+		negativeStr = append(negativeStr, "-"+s)
+	}
+	return negativeStr
+}
+
+func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string, limit int, negativeKeywords []string) []*IPoolArticle {
 
 	type Lingo struct {
 		Lemma string
@@ -74,9 +84,12 @@ func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string) []*IPo
 	v.Set("startDate", fromDate.Format(isoFormat))
 	v.Set("endDate", toDate.Format(isoFormat))
 	v.Set("sortBy", "dateCreated")
-	v.Set("limit", "500")
+	v.Set("limit", strconv.Itoa(limit))
 	if len(publishers) > 0 {
 		v.Set("publisher", strings.Join(addQuotes(publishers), ","))
+	}
+	if len(negativeKeywords) > 0 {
+		v.Set("q", strings.Join(addNegative(addQuotes(negativeKeywords)), ","))
 	}
 	queryURL := baseURL + "?" + v.Encode()
 	log.Printf("query: %s", queryURL)
@@ -158,7 +171,7 @@ func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string) []*IPo
 
 func GetTrendingArticles(count int) ([]*IPoolArticle, map[string]int) {
 
-	allArticles := SearchIPoolArticles(time.Now().Add(-2*time.Hour*24), time.Now(), []string{"www.welt.de"})
+	allArticles := SearchIPoolArticles(time.Now().Add(-2*time.Hour*24), time.Now(), []string{"www.welt.de"}, 500, nil)
 	log.Printf("search resulted in %d articles", len(allArticles))
 	artmap := make(map[string]*IPoolArticle, len(allArticles))
 	for _, art := range allArticles {
@@ -205,6 +218,16 @@ func getArticleScoring(allArticles []*IPoolArticle, tagHistogram map[string]int)
 		score[article.Id] /= len(article.Tags)
 	}
 	return score
+}
+
+func getUnrelatedArticle(article *IPoolArticle) *IPoolArticle {
+	day := 24 * time.Hour
+	t0 := time.Now().Add(-1 * 20 * day)
+	unrelArticles := SearchIPoolArticles(t0, t0.Add(10*day), []string{"www.welt.de"}, 1, article.Tags)
+	if len(unrelArticles) < 1 {
+		return nil
+	}
+	return unrelArticles[0]
 }
 
 func toTag(in string) string {
