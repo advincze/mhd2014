@@ -3,9 +3,13 @@
 *.a
 *.so
 .*
+!/.gitignore
 # Folders
 _obj
 _test
+node_modules/
+bower_components/
+
 
 # Architecture specific extensions/prefixes
 *.[568vq]
