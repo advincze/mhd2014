@@ -21,8 +21,21 @@ function initEvents() {
 function initSizes() {
     $('.answers-images .answer').css('height', parseInt($('.question-wrapper').css('width')) / 2);
 }
+
 function startProgress() {
     $(".question-wrapper.active .progress-bar.counter").removeClass("counter").on("transitionend webkitTransitionEnd", function() {
         $(this).addClass("finished");
     });
+}
+
+function showEndScreen(load) {
+    if (load) {
+        //$.load ...
+    } else {
+        //hide other divs
+    }
+}
+
+function showStartScreen(load) {
+
 }
