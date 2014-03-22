@@ -153,12 +153,10 @@ func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string) []*IPo
 
 	}
 
-	// log.Printf("searchresults:  %#v\n", articles[0])
-
 	return articles
 }
 
-func GetTrendingArticles(count int) []*IPoolArticle {
+func GetTrendingArticles(count int) ([]*IPoolArticle, map[string]int) {
 
 	allArticles := SearchIPoolArticles(time.Now().Add(-2*time.Hour*24), time.Now(), []string{"www.welt.de"})
 	log.Printf("search resulted in %d articles", len(allArticles))
@@ -185,7 +183,7 @@ func GetTrendingArticles(count int) []*IPoolArticle {
 		trendingArticles = append(trendingArticles, trendingArticle)
 	}
 
-	return trendingArticles
+	return trendingArticles, tagHistogram
 }
 
 func getTagHistogram(articles []*IPoolArticle) map[string]int {
