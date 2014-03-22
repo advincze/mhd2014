@@ -37,13 +37,14 @@ func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string) []*IPo
 	}
 
 	type IPoolSearchItem struct {
-		Id           string
-		Category     string
-		DateCreated  int64
-		PublishedURL string
-		Title        string
-		Keywords     []string
-		Linguistics  struct {
+		Id                 string
+		Category           string
+		ExternalIdentifier string
+		DateCreated        int64
+		PublishedURL       string
+		Title              string
+		Keywords           []string
+		Linguistics        struct {
 			Events   []Lingo
 			Geos     []Lingo
 			Keywords []Lingo
@@ -61,7 +62,10 @@ func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string) []*IPo
 	}
 
 	type IPoolSearchResult struct {
-		Documents []IPoolSearchItem
+		Documents  []IPoolSearchItem
+		Pagination struct {
+			Total int
+		}
 	}
 
 	baseURL := "http://ipool-extern.s.asideas.de:9090/api/v2/search"
@@ -70,10 +74,11 @@ func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string) []*IPo
 	v.Set("startDate", fromDate.Format(isoFormat))
 	v.Set("endDate", toDate.Format(isoFormat))
 	v.Set("sortBy", "dateCreated")
+	v.Set("limit", "500")
 	if len(publishers) > 0 {
 		v.Set("publisher", strings.Join(addQuotes(publishers), ","))
 	}
-	queryURL := baseURL + "?" + url.QueryEscape(v.Encode())
+	queryURL := baseURL + "?" + v.Encode()
 	log.Printf("query: %s", queryURL)
 
 	resp, err := http.Get(queryURL)
@@ -90,7 +95,17 @@ func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string) []*IPo
 
 	articles := make([]*IPoolArticle, 0, len(searchresult.Documents))
 
+	usedExternalIds := make(map[string]bool, len(searchresult.Documents))
+
+	log.Printf("search found %d documents, received first %d \n", searchresult.Pagination.Total, len(searchresult.Documents))
+
 	for _, searchitem := range searchresult.Documents {
+
+		if usedExternalIds[searchitem.ExternalIdentifier] {
+			log.Printf("article externelid already used: %s \n", searchitem.Title)
+			continue
+		}
+		usedExternalIds[searchitem.ExternalIdentifier] = true
 
 		article := &IPoolArticle{
 			Id:       searchitem.Id,
@@ -132,6 +147,8 @@ func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string) []*IPo
 		}
 		if article.ImageURL != "" {
 			articles = append(articles, article)
+		} else {
+			log.Printf("article has no image: %s \n", article.Headline)
 		}
 
 	}
@@ -141,9 +158,10 @@ func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string) []*IPo
 	return articles
 }
 
-func GetTrendingArticles() []*IPoolArticle {
+func GetTrendingArticles(count int) []*IPoolArticle {
 
-	allArticles := SearchIPoolArticles(time.Now().Add(-2*time.Hour*24), time.Now(), []string{"www.welt.de", "www.abendblatt.de"})
+	allArticles := SearchIPoolArticles(time.Now().Add(-2*time.Hour*24), time.Now(), []string{"www.welt.de"})
+	log.Printf("search resulted in %d articles", len(allArticles))
 	artmap := make(map[string]*IPoolArticle, len(allArticles))
 	for _, art := range allArticles {
 		artmap[art.Id] = art
@@ -151,8 +169,8 @@ func GetTrendingArticles() []*IPoolArticle {
 	tagHistogram := getTagHistogram(allArticles)
 	articleScoring := getArticleScoring(allArticles, tagHistogram)
 
-	trendingArticles := make([]*IPoolArticle, 0, 5)
-	for i := 0; i < 5; i++ {
+	trendingArticles := make([]*IPoolArticle, 0, count)
+	for i := 0; i < count; i++ {
 		var highscoreArtId string
 		var highestScore int
 		for id, score := range articleScoring {
@@ -162,7 +180,7 @@ func GetTrendingArticles() []*IPoolArticle {
 			}
 		}
 		trendingArticle := artmap[highscoreArtId]
-		log.Printf("trending: %v \n", trendingArticle)
+		log.Printf("trending: %#v \n", trendingArticle)
 		delete(articleScoring, highscoreArtId)
 		trendingArticles = append(trendingArticles, trendingArticle)
 	}

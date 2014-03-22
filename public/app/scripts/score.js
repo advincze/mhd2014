@@ -10,6 +10,9 @@ function Score () {
     this.getScore = function() {
         return current;
     };
+    this.setScore = function () {
+        $(".badge-score").text(parseInt(current));
+    }
     this.increment =  function(type) {
         // 0 falsch -> +0
         // 1 mit joker richtig -> +5
@@ -29,4 +32,5 @@ function Score () {
     }
 };
 
-var s = new Score();
+var score = new Score();
+score.init();
