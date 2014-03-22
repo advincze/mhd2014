@@ -7,13 +7,20 @@
     background-color: #E6E9ED;
     padding: 10px 15px;
 }
+.answer.right {
+    margin-right:1%;
+}
 .answer {
     display: block;
-    width: 50%;
+    width: 49.5%;
     padding: 0;
     margin: 0;
     float: left;
     background-size: cover;
+    background-position:center;
+}
+.answers-images > div {
+    cursor:pointer;
 }
 #all-questions {
     overflow: hidden;
@@ -38,22 +45,22 @@
     left: 0;
     height: 100%;
     width: 100%;
-    -webkit-animation: fadeIn ease-in 0.5s;
-    -o-animation: fadeIn ease-in 0.5s;
-    animation: fadeIn ease-in 0.5s;
+    -webkit-animation: fadeIn ease-in 0.2s;
+    -o-animation: fadeIn ease-in 0.2s;
+    animation: fadeIn ease-in 0.2s;
 }
 .overlay-right {
-    background-color: #0F0;
+    background-color: #8CC152;
 }
 .overlay-wrong {
-    background-color: #F00;
+    background-color: #DA4453;
 }
 @-webkit-keyframes fadeIn {
     from {
         opacity:0;
     }
     to {
-        opacity:1;
+        opacity:0.5;
     }
 }
 @-moz-keyframes fadeIn {
@@ -61,7 +68,7 @@
         opacity:0;
     }
     to {
-        opacity:1;
+        opacity:0.5;
     }
 }
 @keyframes fadeIn {
@@ -69,6 +76,6 @@
         opacity:0;
     }
     to {
-        opacity:1;
+        opacity:0.5;
     }
 }
