@@ -169,11 +169,7 @@ func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string, limit 
 	return articles
 }
 
-<<<<<<< HEAD
-func GetTrendingArticles(count int) []*IPoolArticle {
-=======
 func GetTrendingArticles(count int) ([]*IPoolArticle, map[string]int) {
->>>>>>> FETCH_HEAD
 
 	allArticles := SearchIPoolArticles(time.Now().Add(-2*time.Hour*24), time.Now(), []string{"www.welt.de"}, 500, nil)
 	log.Printf("search resulted in %d articles", len(allArticles))
