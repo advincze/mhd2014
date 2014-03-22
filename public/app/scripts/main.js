@@ -1,10 +1,15 @@
 var questions;
 $(document).ready(function() {
+    showStartScreen(true);
     questions = new Questions();
     questions.init();
     initEvents();
     initSizes();
 });
+
+function startApp() {
+    $('.startscreen').hide();
+}
 
 function initEvents() {
     $(window).on('resize', function() {
@@ -37,5 +42,10 @@ function showEndScreen(load) {
 }
 
 function showStartScreen(load) {
+    $('.questions').css('visibility', 'hidden');
+    if (load) {
+        $('div.startscreen').load("templates/startscreen.html", function(response) {});
+    } else {
 
+    }
 }
