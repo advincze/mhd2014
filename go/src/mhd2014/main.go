@@ -34,9 +34,12 @@ type Task struct {
 	HintURL        string `json:"hintURL"`
 }
 
+// var tasks []*Task
+
 func dailyTasksHandler(rw http.ResponseWriter, req *http.Request) {
 	tasks := make([]*Task, 0, 5)
 
+<<<<<<< HEAD
 	// tasks = append(tasks, &Task{
 	// 	RightImageURL:  "http://www.abendblatt.de/img/vermischtes/crop126086162/8590415521-coriginal/Italian-tourist-died-in-a-bus-accident-in-Gran-Canaria.jpg",
 	// 	WrongImageURL:  "http://img.morgenpost.de/img/berlin-aktuell/mobile125855262/6610714992-w1-h1/Matthias-Koeppel-Maler-in-seiner-Galerie-2-.jpg",
@@ -55,6 +58,12 @@ func dailyTasksHandler(rw http.ResponseWriter, req *http.Request) {
 
 	trendingArticles := GetTrendingArticles(5)
 	for _, article := range trendingArticles {
+=======
+	trendingArticles, tagHistogram := GetTrendingArticles(5)
+
+	for _, article := range trendingArticles {
+
+>>>>>>> FETCH_HEAD
 		tasks = append(tasks, &Task{
 			RightImageURL:  article.ImageURL,
 			WrongImageURL:  article.ImageURL,
@@ -63,6 +72,16 @@ func dailyTasksHandler(rw http.ResponseWriter, req *http.Request) {
 			HintURL:        "http://www.morgenpost.de/vermischtes/stars-und-promis/article126086093/Promi-News-Borchardt-Chef-Mary-modelt-fuer-japanische-Mode.html",
 		})
 	}
+<<<<<<< HEAD
+=======
+
+	for _, article := range trendingArticles {
+		log.Printf("tag scores for article %s  :  \n", article.Headline)
+		for _, tag := range article.Tags {
+			log.Printf(" %s -> %d \n", tag, tagHistogram[tag])
+		}
+	}
+>>>>>>> FETCH_HEAD
 
 	bytes, err := json.MarshalIndent(tasks, "", " ")
 	if err != nil {
