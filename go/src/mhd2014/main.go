@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-
-	_ "github.com/go-sql-driver/mysql"
 )
 
 var publicdir = flag.String("public", "public", "dir to serve static files")
@@ -23,5 +21,6 @@ func main() {
 }
 
 func handler(rw http.ResponseWriter, req *http.Request) {
-	fmt.Fprintf(rw, "test 123")
+	fmt.Fprintf(rw, "test 1234567 ")
+
 }
