@@ -1,0 +1,1 @@
+function Score(){var a;this.init=function(){a=0,console.log("Score inizialized")},this.getScore=function(){return a},this.setScore=function(){$(".badge-score").text(parseInt(a))},this.increment=function(b){switch(b){case 0:break;case 1:a+=5;break;case 2:a+=10}}}var score=new Score;score.init();
