@@ -1,11 +1,11 @@
 {
     "questions": [{
         "headline": "Ukraine",
-        "answerRight": "http://global.fncstatic.com/static/managed/img/fn2/video/012414_ANR_Ukraine_640.jpg",
-        "answerWrong": "http://images.ctv.ca/archives/CTVNews/img2/20110429/800_ap_syria_riot_110429.jpg?2"
+        "answerRight": "https://lh5.googleusercontent.com/-oocML8cY7Kc/AAAAAAAAAAI/AAAAAAAAABU/_-fGU02VPXU/photo.jpg",
+        "answerWrong": "https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-frc1/t31.0-8/56380_3842326939861_1497441615_o.jpg"
     }, {
         "headline": "Flight MH350",
-        "answerRight": "http://global.fncstatic.com/static/managed/img/fn2/video/012414_ANR_Ukraine_640.jpg",
-        "answerWrong": "http://images.ctv.ca/archives/CTVNews/img2/20110429/800_ap_syria_riot_110429.jpg?2"
+        "answerRight": "https://lh5.googleusercontent.com/-oocML8cY7Kc/AAAAAAAAAAI/AAAAAAAAABU/_-fGU02VPXU/photo.jpg",
+        "answerWrong": "https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-frc1/t31.0-8/56380_3842326939861_1497441615_o.jpg"
     }]
 }

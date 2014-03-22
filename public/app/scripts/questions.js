@@ -9,13 +9,17 @@ function Questions() {
                 var questions = data.questions;
                 var first = $('#all-questions .question-wrapper').first();
                 var clone = first.clone();
-                first.find('.question-text h3').text(questions[0].headline);
-                first.find('.answers.right').attr('data-img', questions[0].imageRight);
-                first.find('.answers.wrong').attr('data-img', questions[0].imageWrong);
+                first.children('.question-text').children('h3').text(questions[0].headline);
+                first.children('.answers.right').attr('data-img', questions[0].imageRight);
+                first.children('.answers.wrong').attr('data-img', questions[0].imageWrong);
+                first.attr('left', 0);
+                var l = 100;
                 for (var i = 1; i < questions.length; i++) {
-                    clone.find('.question-text h3').text(questions[i].headline);
-                    clone.find('.answers.right').attr('data-img', questions[i].imageRight);
-                    clone.find('.answers.wrong').attr('data-img', questions[i].imageWrong);
+                    clone.children('.question-text').children('h3').text(questions[i].headline);
+                    clone.children('.answers.right').attr('data-img', questions[i].imageRight);
+                    clone.children('.answers.wrong').attr('data-img', questions[i].imageWrong);
+                    clone.attr('left', l + '%');
+                    l += 100;
                     $('#all-questions').append(clone);
                 }
             }
