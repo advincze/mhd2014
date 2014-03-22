@@ -1,5 +1,6 @@
+var questions;
 $(document).ready(function() {
-    var questions = new Questions();
+    questions = new Questions();
     questions.init();
     initEvents();
     $(".progress-bar.counter").removeClass("counter").on("transitionend webkitTransitionEnd", function() {
@@ -16,11 +17,10 @@ function initEvents() {
         $('.answers-images .answer').css('height', parseInt($('.question-wrapper').css('width')) / 2);
     });
     $('#all-questions').on('click', '.answer', function() {
-        var questions = new Questions();
         questions.validate($(this));
         window.setTimeout(function() {
             questions.next();
-        }, 2000);
+        }, 600);
     });
 }
 

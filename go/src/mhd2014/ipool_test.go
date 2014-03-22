@@ -14,6 +14,10 @@ func TestIPoolQuery(t *testing.T) {
 
 func TestTrendingArticles(t *testing.T) {
 
+<<<<<<< HEAD
+	trendingArticles := GetTrendingArticles(5)
+=======
 	trendingArticles, _ := GetTrendingArticles(5)
+>>>>>>> FETCH_HEAD
 	log.Printf("trending: %v\n", len(trendingArticles))
 }
