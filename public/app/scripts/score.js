@@ -1,23 +1,27 @@
-var Score = function () {
+var Score = (function () {
 	var current;
-	function init() {
-		current = 0;
-		console.log("Score inizialized");
-	}
-	init();
-	
-		this.getScore = function () {
-			return current;
-		};
+	return {
+
+		init: function () {
+			console.log("Score initialized");
+			current = 0;
+		},
 		increment: function(type) {
-			// 0 falsch -> +0
-			// 1 mit joker richtig -> +5
-			// 2 richtig -> +10
+			// type
+			// 0: falsch -> 0 punkte
+			// 1: richtig mit joker -> 5
+			// 2: richtig ohne joker -> 10
 			switch (type) {
 				case 0: break;
-				case 1: current+=5;break;
-				case 2: current+=10;break;
+				case 1: current += 5;break;
+				case 2: current +=10;break;
 				default:break;
 			}
+		},
+		getScore: function() {
+			return current;
 		}
-};
+	};
+	
+})();
+Score.init();
