@@ -1,4 +1,5 @@
 .questions {
+    position:relative;
 }
 .question-wrapper {
     width: 100%;

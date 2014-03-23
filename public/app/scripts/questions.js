@@ -39,17 +39,8 @@ function Questions() {
                     $(this).css('background-image', "url(" + $(this).attr('data-img') + ")");
                 });
 
-                window.setTimeout(function() {
-                    $('#loader').hide();
-                    startProgress();
-                }, 1000);
-
-                    $('#loader').hide();
-
-
-                $('.questions-inner-wrapper').on("transitionend webkitTransitionEnd", function() {
-                    startProgress();
-                });
+                
+                
 
             }
 
@@ -69,6 +60,9 @@ function Questions() {
             $('.question-wrapper').eq(currentQuestion).addClass('active');
             console.log(currentQuestion);
             $('.badge-task').text(currentQuestion + 1 + " / 5");
+             setTimeout(function () {
+               startProgress();
+            },500);
         }
 
         return isEnd;

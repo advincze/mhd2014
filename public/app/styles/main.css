@@ -79,3 +79,8 @@ ul.status li {
     background-position: center center;
     height: 100%;
 }
+.endscreen {
+    display:none;
+    position:absolute;
+    z-index:1004;
+}
