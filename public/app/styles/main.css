@@ -52,7 +52,7 @@ ul.status li {
         max-width: 730px;
     }
 }
-.overlay-screen{
+.overlay-screen {
     width: 100%;
     height: 100%;
     background-color: #3BAFDA;
@@ -63,7 +63,6 @@ ul.status li {
     padding: 20px;
     z-index: 1001;
 }
-
 #start-btn {
     width: 200px;
 }
@@ -83,35 +82,33 @@ ul.status li {
 .endscreen {
     display:none;
 }
-
-.endscreen .header{
+.endscreen .header {
     padding:0;
 }
-
-.endscreen ul{
+.endscreen ul {
     list-style: none;
     margin:0;
     padding:0;
 }
-
-.endscreen ul li{
+.endscreen ul li {
     margin:15px 0;
     padding: 10px;
     background: #eee;
     border-left:6px solid #ED5565;
     color:#555;
 }
-
-.endscreen ul li.correct{
+.endscreen ul li.correct {
     border-color:#48CFAD;
 }
-.endscreen.overlay-screen{
+.endscreen.overlay-screen {
     height:auto;
 }
-.endscreen .result-img{
+.endscreen .result-img {
     width:75px;
     height:75px;
     background-position: center center;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     float:left;
+}
+.startscreen .topics {
 }
