@@ -127,6 +127,9 @@ ul.status li {
     background: #434A54;
     border:none;
 }
+.endscreen .social .fa:hover{
+    opacity:.75;
+}
 .endscreen .social .fa-facebook{
     float:right;
 }
