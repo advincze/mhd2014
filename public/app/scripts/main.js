@@ -61,8 +61,9 @@ function getHint() {
 function setHint(data) {
     var hint = false;
     var crops = [];
-
+    crops[questions.getQuestionData()[questions.getCurrent()].rightImageURL.match(/crop[0-9]*/)[0]] = questions.getQuestionData()[questions.getCurrent()].rightImageURL.match(/crop[0-9]*/)[0];
     for(var i = 0; i<data.images.length;i++) {
+        questions.getQuestionData()[questions.getCurrent()].rightImageURL
         if (typeof crops[data.images[i].url.match(/crop[0-9]*/)[0]] != "string") {
             hint=true; // HINT VORHANDEN -> Button anzeigen
             console.log(data.images[i].url,"gnicht efunden");
