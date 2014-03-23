@@ -99,7 +99,7 @@ ul.status li {
     margin:15px 0;
     padding: 10px;
     background: #eee;
-    border-left:6px solid #ED5565;
+    border-left:15px solid #ED5565;
     color:#555;
 }
 .endscreen ul li.correct {
@@ -179,4 +179,9 @@ ul.status li {
 }
 .startscreen .topic:hover {
     opacity:.85;
+}
+.hand{
+    width:50px;
+    margin:0 auto;
+    display:block;
 }
