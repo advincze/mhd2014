@@ -28,7 +28,7 @@ function initEvents() {
             handleQuestionAnswer(correctAnswer, 600);
        
     });
-    $('#start-btn').on('click', function() {
+    $('.topic').on('click', function() {
         startApp();
     });
 }

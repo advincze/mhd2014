@@ -151,6 +151,11 @@ ul.status li {
     padding-top: 20px;
     padding-bottom: 20px
 }
+.startscreen h2{
+    font-size:26px;
+    width:90%;
+    margin: 0 auto;
+}
 .startscreen .topics {
     padding: 0;
 }
@@ -167,4 +172,7 @@ ul.status li {
 }
 .startscreen .topics h2 {
     margin: 10px;
+}
+.startscreen .topic:hover{
+    opacity:.85;
 }
