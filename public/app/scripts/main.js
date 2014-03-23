@@ -5,18 +5,16 @@ var questions,
 $(document).ready(function() {
     questions = new Questions();
     questions.init();
+    
     initEvents();
     initSizes();
 });
 
-$(window).load(function () {
-    $('#loader').hide();
-});
+
 
 function startApp() {
     $('.startscreen').hide();
     $('.questions').css('visibility', '');
-    startProgress();
 }
 
 function initEvents() {

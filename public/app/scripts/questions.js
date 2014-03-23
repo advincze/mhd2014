@@ -23,7 +23,7 @@ function Questions() {
                 first.css('left', 0);
                 var l = 100;
                 console.log(questions.length);
-                for (var i = 1; i < questions.length; i++) {
+                for (var i = 1; i < 6; i++) {
                     var clone = first.clone();
                     clone.children('.question-text').children('h3').text(questions[i].headline);
                     clone.children('.answers-images').children(".answer.right").attr('data-img', questions[i].rightImageURL.replace("w1-h1", "w500-h500-oo"));
@@ -38,10 +38,8 @@ function Questions() {
                     console.log($(this).attr('data-img'));
                     $(this).css('background-image', "url(" + $(this).attr('data-img') + ")");
                 });
-
-                
-                
-
+                $('#loader').hide();
+                startProgress();   
             }
 
         });
