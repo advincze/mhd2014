@@ -21,6 +21,7 @@ type IPoolArticle struct {
 	Headline          string
 	ImageURL          string
 	CreationTimestamp time.Time
+	Caption           string
 }
 
 func addQuotes(strings []string) []string {
@@ -55,6 +56,7 @@ func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string, limit 
 		PublishedURL       string
 		Title              string
 		Keywords           []string
+		Captions           []string
 		Linguistics        struct {
 			Events   []Lingo
 			Geos     []Lingo
@@ -125,7 +127,7 @@ func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string, limit 
 			Id:       searchitem.Id,
 			URL:      searchitem.PublishedURL,
 			Category: searchitem.Category,
-
+			Caption:  strings.Join(searchitem.Captions, " - "),
 			Headline: searchitem.Title,
 
 			CreationTimestamp: time.Unix(searchitem.DateCreated/1000, 0),
@@ -265,6 +267,7 @@ func getUnrelatedImageURLs(articles []*IPoolArticle) map[string]string {
 
 func getRelatedImageURLs(articles []*IPoolArticle, tagHistogram map[string]int) map[string][]string {
 	// imageURLmap := make(map[string][]string, len(articles))
+
 	return nil
 }
 

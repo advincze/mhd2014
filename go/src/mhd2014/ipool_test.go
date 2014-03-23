@@ -18,3 +18,7 @@ func TestTrendingArticles(t *testing.T) {
 
 	log.Printf("trending: %v\n", len(trendingArticles))
 }
+
+func abc(x []string) {
+	x = x[:2]
+}

@@ -33,13 +33,17 @@ type Task struct {
 	FullArticleURL string `json:"fullArticleURL"`
 	HintURL        string `json:"hintURL"`
 	Category       string `json:"category"`
+	HintText       string `json:"hintText"`
 }
 
-// var tasks []*Task
+var tasksBytes []byte
 
 const taskCount = 25
 
 func dailyTasksHandler(rw http.ResponseWriter, req *http.Request) {
+	if tasksBytes != nil {
+		fmt.Fprintf(rw, "%s", tasksBytes)
+	}
 	tasks := make([]*Task, 0, taskCount)
 
 	trendingArticles, tagHistogram := GetTrendingArticles(25)
@@ -53,6 +57,7 @@ func dailyTasksHandler(rw http.ResponseWriter, req *http.Request) {
 			WrongImageURL:  unrelArticleImageURLs[article.Id],
 			Headline:       article.Headline,
 			FullArticleURL: article.URL,
+			HintText:       article.Caption,
 			HintURL:        "http://www.morgenpost.de/vermischtes/stars-und-promis/article126086093/Promi-News-Borchardt-Chef-Mary-modelt-fuer-japanische-Mode.html",
 			Category:       article.Category,
 		})
@@ -65,10 +70,10 @@ func dailyTasksHandler(rw http.ResponseWriter, req *http.Request) {
 		}
 	}
 
-	bytes, err := json.MarshalIndent(tasks, "", " ")
+	tasksBytes, err := json.MarshalIndent(tasks, "", " ")
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Fprintf(rw, "%s", bytes)
+	fmt.Fprintf(rw, "%s", tasksBytes)
 }
