@@ -86,7 +86,7 @@ function setHint(data) {
 
         // TODO FÜR MORITZ IM OVERLAY. ggf 1. Bild raus wegen zusätzlichem Crop des Teasers oder nach IDs in der URL wegen Dopplungen
     }
-    console.log(hint)
+    console.log("hint",hint);
     if(hint){
         $('.hint-btn').show();
     }
@@ -96,6 +96,7 @@ function stopTimer () {
     clearTimeout(progresstimer);
 }
 function startProgress() {
+    $('.hint-btn').hide();
     getHint();
     $('.category').text(questions.getQuestionData()[questions.getCurrent()].category);
      $(".question-wrapper.active .progress-bar.counter").removeClass("counter");
