@@ -1,24 +1,22 @@
 var questions,
     results = [],
-    currentQuestion = 0,
     progresstimer;
+
 $(document).ready(function() {
     questions = new Questions();
     questions.init();
     initEvents();
     initSizes();
 });
+
 $(window).load(function () {
     $('#loader').hide();
 });
 
 function startApp() {
     $('.startscreen').hide();
-
     $('.questions').css('visibility', '');
-                        startProgress();
-
-
+    startProgress();
 }
 
 function initEvents() {
@@ -53,16 +51,35 @@ function handleQuestionAnswer(correctAnswer, timeout){
 }
 
 function startProgress() {
-    console.log("prog");
     $(".question-wrapper.active .progress-bar.counter").removeClass("counter");
-        progresstimer = setTimeout(function() {
-            console.log("timeout");
-                        handleQuestionAnswer(false,1);
-        },15000);
+    progresstimer = setTimeout(function() {
+        console.log("timeout");
+        handleQuestionAnswer(false,1);
+    },15000);
 }
 
-function showEndScreen(load) {
+function showEndScreen() {
     //$('.questions').css('visibility', 'hidden');
     $('.endscreen').show();
+
+    var rightAnswers = 0;
+    results.forEach(function(e){
+        if(e) rightAnswers++;
+    });
+
+    $('.endscore').text(rightAnswers);
+
+    var $resultList = $('.endscreen').find('.results'),
+        questionData = questions.getQuestionData();
+
+    $.each($resultList.find('li'), function(i,e){  
+        var data = questionData[i],
+            element = $(e);
+        element.find('.result-img').css('background-image', 'url(' + data.rightImageURL + ')');
+        element.find('.result-text').text(data.fullArticleURL);
+        if(results[i]) $(e).addClass('correct');
+    });
+
+
     console.log('ENDE!');
 }
