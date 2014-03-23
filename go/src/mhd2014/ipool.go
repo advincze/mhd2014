@@ -15,6 +15,7 @@ const isoFormat = "2006-01-02T15:04:05.999Z"
 
 type IPoolArticle struct {
 	Id                string
+	URL               string
 	Category          string
 	Tags              []string
 	Headline          string
@@ -89,7 +90,7 @@ func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string, limit 
 		v.Set("publisher", strings.Join(addQuotes(publishers), ","))
 	}
 	if len(negativeKeywords) > 0 {
-		v.Set("q", strings.Join(addNegative(addQuotes(negativeKeywords)), ","))
+		v.Set("q", `-"`+strings.Join(negativeKeywords, " ")+`"`)
 	}
 	queryURL := baseURL + "?" + v.Encode()
 	log.Printf("query: %s", queryURL)
@@ -115,15 +116,16 @@ func SearchIPoolArticles(fromDate, toDate time.Time, publishers []string, limit 
 	for _, searchitem := range searchresult.Documents {
 
 		if usedExternalIds[searchitem.ExternalIdentifier] {
-			log.Printf("article externelid already used: %s \n", searchitem.Title)
+			// log.Printf("article externelid already used: %s \n", searchitem.Title)
 			continue
 		}
 		usedExternalIds[searchitem.ExternalIdentifier] = true
 
 		article := &IPoolArticle{
 			Id:       searchitem.Id,
+			URL:      searchitem.PublishedURL,
 			Category: searchitem.Category,
-			// Tags              []Tag
+
 			Headline: searchitem.Title,
 
 			CreationTimestamp: time.Unix(searchitem.DateCreated/1000, 0),
@@ -228,6 +230,37 @@ func getUnrelatedArticle(article *IPoolArticle) *IPoolArticle {
 		return nil
 	}
 	return unrelArticles[0]
+}
+
+func getUnrelatedImageURLs(articles []*IPoolArticle) map[string]string {
+	day := 24 * time.Hour
+	count := len(articles)
+	t0 := time.Now().Add(-1 * time.Duration(20+5*count) * 24 * time.Hour)
+	unrelArticles := make(map[string]string, count)
+	usedArticlesIds := make(map[string]bool, count)
+	for _, article := range articles {
+		foundArticles := SearchIPoolArticles(t0, t0.Add(5*day), []string{"www.welt.de", "www.abendblatt.de"}, 20, article.Tags)
+		if len(foundArticles) < 1 {
+			foundArticles = SearchIPoolArticles(t0, t0.Add(10*day), []string{"www.welt.de", "www.abendblatt.de"}, 20, nil)
+		}
+		if len(foundArticles) < 1 {
+			foundArticles = SearchIPoolArticles(t0, time.Now(), []string{"www.welt.de", "www.abendblatt.de"}, 20, nil)
+		}
+		if len(foundArticles) > 0 {
+
+			var foundArticle *IPoolArticle
+			for i := 0; i < len(foundArticles); i++ {
+				if !usedArticlesIds[foundArticles[i].Id] {
+					foundArticle = foundArticles[i]
+					usedArticlesIds[foundArticle.Id] = true
+					break
+				}
+			}
+			unrelArticles[article.Id] = foundArticle.ImageURL
+		}
+		t0 = t0.Add(2 * day)
+	}
+	return unrelArticles
 }
 
 func toTag(in string) string {

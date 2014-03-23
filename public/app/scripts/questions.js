@@ -1,6 +1,7 @@
 function Questions() {
     var currentQuestion = 0,
         questCount = 0,
+        questMax = 4,
         questions = {};
 
     this.init = function() {
@@ -37,27 +38,43 @@ function Questions() {
                     console.log($(this).attr('data-img'));
                     $(this).css('background-image', "url(" + $(this).attr('data-img') + ")");
                 });
-                 window.setTimeout(function () {
+
+                window.setTimeout(function() {
                     $('#loader').hide();
                     startProgress();
-                },1000);
+                }, 1000);
+
+                    $('#loader').hide();
+
+
                 $('.questions-inner-wrapper').on("transitionend webkitTransitionEnd", function() {
                     startProgress();
                 });
-               
+
             }
 
         });
     },
     this.next = function() {
-        currentQuestion++;
-        $('.question-wrapper.active').removeClass('active');
-        var oldValue = $('.questions-inner-wrapper')[0].style.left == "" ? 0 : $('.questions-inner-wrapper')[0].style.left;
-        var newValue = (parseInt(oldValue) - 100) + '%';
-        $('.questions-inner-wrapper').css('left', newValue);
-        $('.question-wrapper').eq(currentQuestion).addClass('active');
-        console.log(currentQuestion);
-        $('.badge-task').text(currentQuestion + 1 + " / 5");
+
+        var isEnd = true;
+
+        if (currentQuestion < questMax) {
+            isEnd = false;
+            currentQuestion++;
+            $('.question-wrapper.active').removeClass('active');
+            var oldValue = $('.questions-inner-wrapper')[0].style.left == "" ? 0 : $('.questions-inner-wrapper')[0].style.left;
+            var newValue = (parseInt(oldValue) - 100) + '%';
+            $('.questions-inner-wrapper').css('left', newValue);
+            $('.question-wrapper').eq(currentQuestion).addClass('active');
+            console.log(currentQuestion);
+            $('.badge-task').text(currentQuestion + 1 + " / 5");
+        }
+
+        return isEnd;
+    }
+    this.getCurrent = function() {
+        return currentQuestion;
     }
     this.validate = function(obj) {
 
@@ -76,7 +93,7 @@ function Questions() {
 
         return correctAnswer;
     }
-    this.getQuestionData = function(){
+    this.getQuestionData = function() {
         return questions;
     }
 }
