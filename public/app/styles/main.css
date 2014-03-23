@@ -91,7 +91,7 @@ ul.status li {
     margin:0;
     padding:0;
 }
-.endscreen .header h3{
+.endscreen .header h3 {
     font-size: 50px;
     margin-bottom: 20px;
 }
@@ -105,7 +105,7 @@ ul.status li {
 .endscreen ul li.correct {
     border-color:#48CFAD;
 }
-.endscreen ul .hl{
+.endscreen ul .hl {
     font-weight:bold;
     margin-bottom:5px;
 }
@@ -120,27 +120,27 @@ ul.status li {
     float:left;
     margin-right:15px;
 }
-.endscreen .social .fa{
+.endscreen .social .fa {
     font-size:24px;
     width: 48%;
     float: left;
     background: #434A54;
     border:none;
 }
-.endscreen .social .fa:hover{
+.endscreen .social .fa:hover {
     opacity:.75;
 }
-.endscreen .social .fa-facebook{
+.endscreen .social .fa-facebook {
     float:right;
 }
-.endscreen .social{
+.endscreen .social {
     margin-bottom:20px;
 }
-.conclusion{
+.conclusion {
     font-size:24px;
     font-weight:bold;
 }
-.share-cta{
+.share-cta {
     font-weight:bold;
     margin-bottom:10px;
     font-size:24px;
@@ -151,8 +151,12 @@ ul.status li {
     padding-top: 20px;
     padding-bottom: 20px
 }
-.startscreen h2{
+.startscreen h2 {
     font-size:26px;
+    width:90%;
+    margin: 0 auto;
+}
+.startscreen p {
     width:90%;
     margin: 0 auto;
 }
@@ -173,6 +177,6 @@ ul.status li {
 .startscreen .topics h2 {
     margin: 10px;
 }
-.startscreen .topic:hover{
+.startscreen .topic:hover {
     opacity:.85;
 }

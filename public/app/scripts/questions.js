@@ -18,8 +18,10 @@ function Questions() {
                 first.children('.question-text').children('h3').text(questions[0].headline);
                 console.log(questions[0].answerRight);
                 console.log(questions[0].answerWrong);
+
                 first.children('.answers-images').children(".answer.right").attr('data-img', questions[0].rightImageURL.replace("w1-h1", "w500-h500-oo"));
                 first.children('.answers-images').children(".answer.wrong").attr('data-img', questions[0].wrongImageURL.replace("w1-h1", "w500-h500-oo"));
+
                 first.css('left', 0);
                 var l = 100;
                 console.log(questions.length);
@@ -32,17 +34,33 @@ function Questions() {
                     l += 100;
                     $('#all-questions .questions-inner-wrapper').append(clone);
                 }
+
+                $('.answer.wrong').each(function(i, e) {
+                    if (Math.random() > 0.5) {
+                        var parent = $(this).parent('div');
+                        var elem1 = parent.children('.right');
+                        var elem2 = parent.children('.wrong');
+                        jQuery(elem1).before(jQuery(elem2));
+                    }
+                });
+
                 first.addClass('active');
                 //takes the active question and activates it
                 $('.question-wrapper .answer').each(function() {
                     console.log($(this).attr('data-img'));
                     $(this).css('background-image', "url(" + $(this).attr('data-img') + ")");
                 });
+                $('div.answers-images').each(function() {
+                    $(this).children('.answer').first().addClass('first');
+                });
                 $('#loader').hide();
-                startProgress();   
+                startProgress();
             }
 
         });
+    },
+    this.swapElements = function(elm1, elm2) {
+
     },
     this.next = function() {
 
@@ -58,9 +76,9 @@ function Questions() {
             $('.question-wrapper').eq(currentQuestion).addClass('active');
             console.log(currentQuestion);
             $('.badge-task').text(currentQuestion + 1 + " / 5");
-             setTimeout(function () {
-               startProgress();
-            },500);
+            setTimeout(function() {
+                startProgress();
+            }, 500);
         }
 
         return isEnd;
