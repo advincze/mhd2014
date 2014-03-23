@@ -61,6 +61,7 @@ ul.status li {
     left: 0;
     color: #FFF;
     padding: 20px;
+    z-index: 1001;
 }
 #start-btn {
     width: 200px;
@@ -70,7 +71,7 @@ ul.status li {
     z-index: 1000;
     top: 0;
     left:0;
-    background-color:rgba(0,0,0,0.4);
+    background-color:rgba(0, 0, 0, 0.4);
     background-image: url(preloader.gif);
     width: 100%;
     background-repeat: no-repeat;

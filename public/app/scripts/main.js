@@ -1,6 +1,5 @@
 var questions;
 $(document).ready(function() {
-    showStartScreen(true);
     questions = new Questions();
     questions.init();
     initEvents();
@@ -9,7 +8,6 @@ $(document).ready(function() {
 
 function startApp() {
     $('.startscreen').hide();
-    $('.questions').css('visibility', '');
 }
 
 function initEvents() {
@@ -21,6 +19,9 @@ function initEvents() {
         window.setTimeout(function() {
             questions.next();
         }, 600);
+    });
+    $('#start-btn').on('click', function() {
+        startApp();
     });
 }
 
@@ -39,18 +40,5 @@ function showEndScreen(load) {
         //$.load ...
     } else {
         //hide other divs
-    }
-}
-
-function showStartScreen(load) {
-    $('.questions').css('visibility', 'hidden');
-    if (load) {
-        $('div.startscreen').load("templates/startscreen.html", function(response) {
-            $('#start-btn').on('click', function() {
-                startApp();
-            });
-        });
-    } else {
-
     }
 }
