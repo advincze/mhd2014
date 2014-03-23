@@ -38,10 +38,15 @@ function Questions() {
                     console.log($(this).attr('data-img'));
                     $(this).css('background-image', "url(" + $(this).attr('data-img') + ")");
                 });
+<<<<<<< HEAD
                 window.setTimeout(function() {
                     $('#loader').hide();
                     startProgress();
                 }, 1000);
+=======
+                    $('#loader').hide();
+
+>>>>>>> b65d72345144dfd207022b4d3fec36b53b04244e
                 $('.questions-inner-wrapper').on("transitionend webkitTransitionEnd", function() {
                     startProgress();
                 });

@@ -37,20 +37,22 @@ type Task struct {
 
 // var tasks []*Task
 
-func dailyTasksHandler(rw http.ResponseWriter, req *http.Request) {
-	tasks := make([]*Task, 0, 5)
+const taskCount = 25
 
-	trendingArticles, tagHistogram := GetTrendingArticles(5)
+func dailyTasksHandler(rw http.ResponseWriter, req *http.Request) {
+	tasks := make([]*Task, 0, taskCount)
+
+	trendingArticles, tagHistogram := GetTrendingArticles(25)
+
+	unrelArticleImageURLs := getUnrelatedImageURLs(trendingArticles)
 
 	for _, article := range trendingArticles {
 
-		unrelArticle := getUnrelatedArticle(article)
-
 		tasks = append(tasks, &Task{
 			RightImageURL:  article.ImageURL,
-			WrongImageURL:  unrelArticle.ImageURL,
+			WrongImageURL:  unrelArticleImageURLs[article.Id],
 			Headline:       article.Headline,
-			FullArticleURL: "http://www.morgenpost.de/vermischtes/stars-und-promis/article126086093/Promi-News-Borchardt-Chef-Mary-modelt-fuer-japanische-Mode.html",
+			FullArticleURL: article.URL,
 			HintURL:        "http://www.morgenpost.de/vermischtes/stars-und-promis/article126086093/Promi-News-Borchardt-Chef-Mary-modelt-fuer-japanische-Mode.html",
 			Category:       article.Category,
 		})
