@@ -1,7 +1,8 @@
 var questions,
     results = [],
     progresstimer;
-
+       var ajax = false,
+        started = false;
 $(document).ready(function() {
     questions = new Questions();
     questions.init();
@@ -15,6 +16,9 @@ $(document).ready(function() {
 function startApp() {
     $('.startscreen').hide();
     $('.questions').css('visibility', '');
+    if(started && ajax) {
+        startProgress();
+    }
 }
 
 function initEvents() {
@@ -29,6 +33,7 @@ function initEvents() {
        
     });
     $('.topic').on('click', function() {
+        started=true;
         startApp();
     });
 }
@@ -47,8 +52,26 @@ function handleQuestionAnswer(correctAnswer, timeout){
             }
         }, timeout);
 }
+function getHint() {
+    console.log(questions.getQuestionData()[questions.getCurrent()].fullArticleURL);
+    $.ajax({
+        url:"http://api.embed.ly/1/extract?key=03748ef27f6d41639a1973fd03ebabbb&url="+questions.getQuestionData()[questions.getCurrent()].fullArticleURL+"&maxwidth=300&maxheight=300&format=json&callback=setHint"
+    })
+}
+function setHint(data) {
+    hint = false;
+    for(var i = 0; i<data.images.length;i++) {
+        hint=true; // HINT VORHANDEN -> Button anzeigen
+        console.log(data.images[i].url);
+        // TODO FÜR MORITZ IM OVERLAY. ggf 1. Bild raus wegen zusätzlichem Crop des Teasers oder nach IDs in der URL wegen Dopplungen
+    }
+    
+}
+function stopTimer () {
 
+}
 function startProgress() {
+    getHint();
     $(".question-wrapper.active .progress-bar.counter").removeClass("counter");
     progresstimer = setTimeout(function() {
         console.log("timeout");

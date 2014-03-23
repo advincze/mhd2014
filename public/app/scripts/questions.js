@@ -11,6 +11,7 @@ function Questions() {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
+                ajax = true;
                 questions = data;
                 questCount = questions.length;
                 var first = $('#all-questions .question-wrapper').first();
@@ -54,7 +55,9 @@ function Questions() {
                     $(this).children('.answer').first().addClass('first');
                 });
                 $('#loader').hide();
-                startProgress();
+                if(ajax && started) {
+                    startProgress();
+                }
             }
 
         });
@@ -77,7 +80,9 @@ function Questions() {
             console.log(currentQuestion);
             $('.badge-task').text(currentQuestion + 1 + " / 5");
             setTimeout(function() {
-                startProgress();
+                
+                    startProgress();
+                
             }, 500);
         }
 
