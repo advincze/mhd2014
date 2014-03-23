@@ -115,6 +115,7 @@ ul.status li {
 .endscreen .result-img {
     width:75px;
     height:75px;
+    background-size:contain;
     background-position: center center;
     background-repeat: no-repeat;
     float:left;
