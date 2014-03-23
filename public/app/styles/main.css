@@ -142,5 +142,26 @@ ul.status li {
     margin-bottom:10px;
     font-size:24px;
 }
+.startscreen h1 {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px
+}
 .startscreen .topics {
+    padding: 0;
+}
+.startscreen .topics li {
+    width: 90%;
+    margin: 0 auto;
+    list-style: none;
+    background-color: #F5F7FA;
+    margin-top: 20px;
+    padding-left: 10px;
+    color: #434A54;
+    padding: 5px;
+    cursor: pointer;
+}
+.startscreen .topics h2 {
+    margin: 10px;
 }
