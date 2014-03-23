@@ -1,4 +1,6 @@
-var questions;
+var questions,
+    results = [],
+    currentQuestion = 0;
 $(document).ready(function() {
     showStartScreen(true);
     questions = new Questions();
@@ -17,10 +19,9 @@ function initEvents() {
         $('.answers-images .answer').css('height', parseInt($('.question-wrapper').css('width')) / 2);
     });
     $('#all-questions').on('click', '.answer', function() {
-        questions.validate($(this));
-        window.setTimeout(function() {
-            questions.next();
-        }, 600);
+        var correctAnswer = questions.validate($(this));
+        handleQuestionAnswer(correctAnswer, 600);
+       
     });
 }
 
@@ -28,22 +29,35 @@ function initSizes() {
     $('.answers-images .answer').css('height', parseInt($('.question-wrapper').css('width')) / 2);
 }
 
+function handleQuestionAnswer(correctAnswer, timeout){
+        results[questions.getCurrent()] = correctAnswer;
+        
+        window.setTimeout(function() {
+            var isEnd = questions.next()
+            if(isEnd){
+                showEndScreen();
+            }
+        }, timeout);
+}
+
 function startProgress() {
-    $(".question-wrapper.active .progress-bar.counter").removeClass("counter").on("transitionend webkitTransitionEnd", function() {
-        $(this).addClass("finished");
-    });
+    $(".question-wrapper.active .progress-bar.counter")
+        .removeClass("counter")
+        .on("transitionend webkitTransitionEnd", function() {
+            $(this).addClass("finished");
+            handleQuestionAnswer(false,1);
+        });
 }
 
 function showEndScreen(load) {
-    if (load) {
-        //$.load ...
-    } else {
-        //hide other divs
-    }
+    $('.questions').css('visibility', 'hidden');
+    $('.endscreen').show();
+    console.log('ENDE!');
 }
 
 function showStartScreen(load) {
     $('.questions').css('visibility', 'hidden');
+    $('.endscreen').hide();
     if (load) {
         $('div.startscreen').load("templates/startscreen.html", function(response) {
             $('#start-btn').on('click', function() {
