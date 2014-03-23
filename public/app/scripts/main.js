@@ -59,10 +59,17 @@ function getHint() {
     })
 }
 function setHint(data) {
-    hint = false;
+    var hint = false;
+    var crops = [];
+
     for(var i = 0; i<data.images.length;i++) {
-        hint=true; // HINT VORHANDEN -> Button anzeigen
-        console.log(data.images[i].url);
+        if (typeof crops[data.images[i].url.match(/crop[0-9]*/)[0]] != "string") {
+            hint=true; // HINT VORHANDEN -> Button anzeigen
+            console.log(data.images[i].url,"gnicht efunden");
+            crops[data.images[i].url.match(/crop[0-9]*/)[0]] = data.images[i].url.match(/crop[0-9]*/)[0];
+        } else {
+        console.log(data.images[i].url,"gefunden");
+        }
         // TODO FÜR MORITZ IM OVERLAY. ggf 1. Bild raus wegen zusätzlichem Crop des Teasers oder nach IDs in der URL wegen Dopplungen
     }
     
