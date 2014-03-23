@@ -32,10 +32,11 @@
 }
 ul.status {
     margin: 0;
+    float:left;
     padding:0;
 }
 ul.status li {
-    display: inline;
+    float:left;
 }
 .status-wrapper .badge {
     background:none;
@@ -184,4 +185,28 @@ ul.status li {
     width:50px;
     margin:0 auto;
     display:block;
+}
+.hint-btn{
+    background:#eee;
+    color:#222;
+    float:right;
+    padding: 3px 10px;
+    font-size:12px;
+}
+.hint-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999999;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background: rgba(0,0,0,0.5);
+    display:none;
+}
+.hint-overlay img{
+    width: 100%;
+}
+.hint-overlay .btn{
+    margin:25px auto;
 }

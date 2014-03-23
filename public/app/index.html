@@ -65,7 +65,7 @@
                 </div>
                 <div class="conclusion">
                     You answered
-                    <span class="endscore">0</span>of 5 questions correctly.
+                    <span class="endscore">0</span> of 5 questions correctly.
                 </div>
 
                 <div class="social clearfix">
@@ -114,11 +114,24 @@
 
             </div>
 
+
+            <div class="hint-overlay">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6" id="hint0"></div>
+                    <div class="col-sm-6 col-md-6" id="hint1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-md-6" id="hint2"></div>
+                    <div class="col-sm-6 col-md-6" id="hint3"></div>
+                </div>
+                <div class="btn btn-success continue-btn">Continue</div>
+            </div>
+
             <div class="header">
                 <h3>Hi5!</h3>
             </div>
-            <div class="status-wrapper">
-                <ul class="status">
+            <div class="status-wrapper clearfix">
+                <ul class="status clearfix">
                     <li class="category badge badge-success badge-category">Category</li>
                     <li class="badge badge-success">Task
                         <span class="badge-task task">1/5</span>
@@ -127,6 +140,7 @@
                         <span class="score badge-score">0</span>
                     </li>
                 </ul>
+                <div class="hint-btn btn"><i class="fa fa-star"></i> show hint</div>
             </div>
 
             <div id="all-questions">
