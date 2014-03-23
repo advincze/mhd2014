@@ -235,7 +235,7 @@ func getUnrelatedArticle(article *IPoolArticle) *IPoolArticle {
 func getUnrelatedImageURLs(articles []*IPoolArticle) map[string]string {
 	day := 24 * time.Hour
 	count := len(articles)
-	t0 := time.Now().Add(-1 * time.Duration(20+5*count) * 24 * time.Hour)
+	t0 := time.Now().Add(-1 * time.Duration(20+10*count) * 24 * time.Hour)
 	unrelArticles := make(map[string]string, count)
 	usedArticlesIds := make(map[string]bool, count)
 	for _, article := range articles {
@@ -258,9 +258,18 @@ func getUnrelatedImageURLs(articles []*IPoolArticle) map[string]string {
 			}
 			unrelArticles[article.Id] = foundArticle.ImageURL
 		}
-		t0 = t0.Add(2 * day)
+		t0 = t0.Add(10 * day)
 	}
 	return unrelArticles
+}
+
+func getRelatedImageURLs(articles []*IPoolArticle, tagHistogram map[string]int) map[string][]string {
+	// imageURLmap := make(map[string][]string, len(articles))
+	return nil
+}
+
+func getHighestScoringTags(n int, tags []string, tagHistogram map[string]int) []string {
+	return nil
 }
 
 func toTag(in string) string {
