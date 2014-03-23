@@ -72,9 +72,12 @@ function showEndScreen() {
 
     $.each($resultList.find('li'), function(i,e){  
         var data = questionData[i],
-            element = $(e);
+            element = $(e),
+            $resultText = element.find('.result-text');
         element.find('.result-img').css('background-image', 'url(' + data.rightImageURL + ')');
-        element.find('.result-text').text(data.fullArticleURL);
+        $resultText.find('.hl').text(data.headline);
+        $resultText.find('.articleBtn').attr('href', data.fullArticleURL);
+        
         if(results[i]) $(e).addClass('correct');
     });
 

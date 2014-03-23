@@ -84,11 +84,16 @@ ul.status li {
 }
 .endscreen .header {
     padding:0;
+    margin-bottom: 30px;
 }
 .endscreen ul {
     list-style: none;
     margin:0;
     padding:0;
+}
+.endscreen .header h3{
+    font-size: 50px;
+    margin-bottom: 20px;
 }
 .endscreen ul li {
     margin:15px 0;
@@ -100,6 +105,10 @@ ul.status li {
 .endscreen ul li.correct {
     border-color:#48CFAD;
 }
+.endscreen ul .hl{
+    font-weight:bold;
+    margin-bottom:5px;
+}
 .endscreen.overlay-screen {
     height:auto;
 }
@@ -109,6 +118,29 @@ ul.status li {
     background-position: center center;
     background-repeat: no-repeat;
     float:left;
+    margin-right:15px;
+}
+.endscreen .social .fa{
+    font-size:24px;
+    width: 48%;
+    float: left;
+    background: #434A54;
+    border:none;
+}
+.endscreen .social .fa-facebook{
+    float:right;
+}
+.endscreen .social{
+    margin-bottom:20px;
+}
+.conclusion{
+    font-size:24px;
+    font-weight:bold;
+}
+.share-cta{
+    font-weight:bold;
+    margin-bottom:10px;
+    font-size:24px;
 }
 .startscreen .topics {
 }
